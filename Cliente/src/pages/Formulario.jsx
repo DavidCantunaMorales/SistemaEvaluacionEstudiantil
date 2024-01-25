@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./Formulario.css";
+
 
 export const Formulario = () => {
   const [evaluacion, setEvaluacion] = useState({
@@ -68,71 +70,98 @@ export const Formulario = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-4">
       <h1>Formulario de Evaluación</h1>
-      <label>
-        Nombre de la Evaluación:
-        <input
-          type="text"
-          value={evaluacion.nombre}
-          onChange={handleNombreChange}
-        />
-      </label>
-      <button onClick={agregarPregunta}>Agregar Pregunta</button>
+      <form>
+        <div className="mb-3">
+          <label htmlFor="nombreEvaluacion" className="form-label">
+            Nombre de la Evaluación:
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="nombreEvaluacion"
+            value={evaluacion.nombre}
+            onChange={handleNombreChange}
+          />
+        </div>
+        <button
+          type="button"
+          className="btn btn-primary mb-3"
+          onClick={agregarPregunta}
+        >
+          Agregar Pregunta
+        </button>
 
-      {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-        <div key={preguntaIndex}>
-          <label>
-            Pregunta {preguntaIndex + 1}:
+        {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
+          <div key={preguntaIndex} className="mb-3">
+            <label htmlFor={`pregunta${preguntaIndex}`} className="form-label">
+              Pregunta {preguntaIndex + 1}:
+            </label>
             <input
               type="text"
+              className="form-control"
+              id={`pregunta${preguntaIndex}`}
               value={pregunta.pregunta}
               onChange={(e) => handlePreguntaChange(preguntaIndex, e)}
             />
-          </label>
-          <button onClick={() => agregarOpcion(preguntaIndex)}>
-            Agregar Opción
-          </button>
+            <button
+              type="button"
+              className="btn btn-secondary mb-3"
+              onClick={() => agregarOpcion(preguntaIndex)}
+            >
+              Agregar Opción
+            </button>
 
-          {pregunta.opciones.map((opcion, opcionIndex) => (
-            <div key={opcionIndex}>
-              <label>
-                Opción {opcionIndex + 1}:
+            {pregunta.opciones.map((opcion, opcionIndex) => (
+              <div key={opcionIndex} className="mb-3">
+                <label
+                  htmlFor={`opcion${preguntaIndex}-${opcionIndex}`}
+                  className="form-label"
+                >
+                  Opción {opcionIndex + 1}:
+                </label>
                 <input
                   type="text"
+                  className="form-control"
+                  id={`opcion${preguntaIndex}-${opcionIndex}`}
                   value={opcion}
                   onChange={(e) =>
                     handleOpcionChange(preguntaIndex, opcionIndex, e)
                   }
                 />
-              </label>
-            </div>
-          ))}
-        </div>
-      ))}
+              </div>
+            ))}
+          </div>
+        ))}
 
-      <div>
-        <h2>Resumen:</h2>
-        <p>Nombre de la Evaluación: {evaluacion.nombre}</p>
-        <p>Preguntas:</p>
-        <ul>
-          {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-            <li key={preguntaIndex}>
-              Pregunta {preguntaIndex + 1}: {pregunta.pregunta}
-              <ul>
-                {pregunta.opciones.map((opcion, opcionIndex) => (
-                  <li key={opcionIndex}>
-                    Opción {opcionIndex + 1}: {opcion}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button onClick={() => guardarEvaluacionEnBackend(evaluacion)}>
-        Guardar Evaluación
-      </button>
+        <div className="mb-3">
+          <h2>Resumen:</h2>
+          <p>Nombre de la Evaluación: {evaluacion.nombre}</p>
+          <p>Preguntas:</p>
+          <ul>
+            {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
+              <li key={preguntaIndex}>
+                Pregunta {preguntaIndex + 1}: {pregunta.pregunta}
+                <ul>
+                  {pregunta.opciones.map((opcion, opcionIndex) => (
+                    <li key={opcionIndex}>
+                      Opción {opcionIndex + 1}: {opcion}
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button
+          type="button"
+          className="btn btn-primary mb-2"
+          onClick={() => guardarEvaluacionEnBackend(evaluacion)}
+        >
+          Guardar Evaluación
+        </button>
+      </form>
     </div>
   );
 };
