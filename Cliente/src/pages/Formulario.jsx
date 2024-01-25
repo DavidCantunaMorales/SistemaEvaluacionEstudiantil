@@ -1,15 +1,18 @@
 import { useState } from "react";
+import axios from "axios";
+
+const POST_API_URL = "http://localhost:3002/agregarEvaluacion";
 
 export const Formulario = () => {
   const [evaluacion, setEvaluacion] = useState({
-    nombre: "",
+    titulo: "",
     preguntas: [],
   });
 
   const handleNombreChange = (e) => {
     setEvaluacion({
       ...evaluacion,
-      nombre: e.target.value,
+      titulo: e.target.value,
     });
   };
 
@@ -47,23 +50,19 @@ export const Formulario = () => {
     });
   };
 
-  const guardarEvaluacionEnBackend = async () => {
+  const agregarEvaluacion = async () => {
     try {
-      const response = await fetch("http://localhost:3001/guardar-evaluacion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(evaluacion),
-      });
+      const response = await axios.post(POST_API_URL, evaluacion);
+      // Hacer algo con la respuesta, por ejemplo, actualizar el estado o redirigir
+      console.log("Evaluación agregada exitosamente:", response.data);
 
-      if (response.ok) {
-        console.log("Evaluación guardada con éxito en el servidor.");
-      } else {
-        console.error("Error al guardar la evaluación en el servidor.");
-      }
+      // Puedes actualizar el estado aquí si es necesario
+      setEvaluacion({
+        titulo: "",
+        preguntas: [],
+      });
     } catch (error) {
-      console.error("Error de red:", error);
+      console.error("Error al agregar una nueva evaluación:", error);
     }
   };
 
@@ -74,7 +73,7 @@ export const Formulario = () => {
         Nombre de la Evaluación:
         <input
           type="text"
-          value={evaluacion.nombre}
+          value={evaluacion.titulo}
           onChange={handleNombreChange}
         />
       </label>
@@ -110,27 +109,7 @@ export const Formulario = () => {
           ))}
         </div>
       ))}
-
-      <div>
-        <h2>Resumen:</h2>
-        <p>Nombre de la Evaluación: {evaluacion.nombre}</p>
-        <p>Preguntas:</p>
-        <ul>
-          {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-            <li key={preguntaIndex}>
-              Pregunta {preguntaIndex + 1}: {pregunta.pregunta}
-              <ul>
-                {pregunta.opciones.map((opcion, opcionIndex) => (
-                  <li key={opcionIndex}>
-                    Opción {opcionIndex + 1}: {opcion}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <button onClick={() => guardarEvaluacionEnBackend(evaluacion)}>
+      <button onClick={() => agregarEvaluacion(evaluacion)}>
         Guardar Evaluación
       </button>
     </div>

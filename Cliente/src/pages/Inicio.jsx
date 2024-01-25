@@ -1,25 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const GET_API_URL = "http://localhost:3001/obtener-evaluaciones";
+const GET_API_URL = "http://localhost:3001/obtenerEvaluaciones";
 
 export const Inicio = () => {
   const [evaluaciones, setEvaluaciones] = useState([]);
 
   useEffect(() => {
-    // Función asincrónica para obtener las evaluaciones
-    const obtenerEvaluaciones = async () => {
-      try {
-        const response = await axios.get(GET_API_URL);
-        setEvaluaciones(response.data);
-      } catch (error) {
-        console.error("Error al obtener las evaluaciones:", error);
-      }
-    };
-
-    // Llamada a la función para obtener evaluaciones al montar el componente
-    obtenerEvaluaciones();
-  }, []); // El segundo argumento es un array vacío para que useEffect se ejecute solo al montar el componente
+    axios
+      .get(GET_API_URL)
+      .then((response) => setEvaluaciones(response.data))
+      .catch((error) =>
+        console.log("Error al obtener las evaluaciones:", error)
+      );
+  }, []);
 
   return (
     <div>
@@ -27,8 +21,8 @@ export const Inicio = () => {
       <ul>
         {evaluaciones.map((evaluacion, index) => (
           <li key={index}>
-            <p>Nombre de la Evaluación: {evaluacion.nombre}</p>
-            <p>Preguntas:</p>
+            <p>Evaluación: {evaluacion.titulo}</p>
+            <p>Banco de Preguntas:</p>
             <ul>
               {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
                 <li key={preguntaIndex}>
@@ -36,7 +30,7 @@ export const Inicio = () => {
                   <ul>
                     {pregunta.opciones.map((opcion, opcionIndex) => (
                       <li key={opcionIndex}>
-                        Opción {opcionIndex + 1}: {opcion}
+                        {String.fromCharCode(97 + opcionIndex)}: {opcion}
                       </li>
                     ))}
                   </ul>
