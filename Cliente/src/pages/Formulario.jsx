@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./Formulario.css"; // Agrega tu archivo de estilos personalizados si es necesario
 
 const POST_API_URL = "http://localhost:3002/agregarEvaluacion";
 
@@ -71,10 +73,7 @@ export const Formulario = () => {
   const agregarEvaluacion = async () => {
     try {
       const response = await axios.post(POST_API_URL, evaluacion);
-      // Hacer algo con la respuesta, por ejemplo, actualizar el estado o redirigir
       console.log("Evaluación agregada exitosamente:", response.data);
-
-      // Puedes actualizar el estado aquí si es necesario
       setEvaluacion({
         titulo: "",
         preguntas: [],
@@ -85,58 +84,75 @@ export const Formulario = () => {
   };
 
   return (
-    <div>
-      <h1>Formulario de Evaluación</h1>
-      <label>
-        Nombre de la Evaluación:
+    <div className="container mt-4">
+      <h1 className="mb-4">Formulario de Evaluación</h1>
+      <div className="mb-3">
+        <label className="form-label">Nombre de la Evaluación:</label>
         <input
           type="text"
+          className="form-control"
           value={evaluacion.titulo}
           onChange={handleNombreChange}
         />
-      </label>
-      <button onClick={agregarPregunta}>Agregar Pregunta</button>
+      </div>
+      <button className="btn btn-primary mb-3" onClick={agregarPregunta}>
+        Agregar Pregunta
+      </button>
 
       {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-        <div key={preguntaIndex}>
-          <label>
-            Pregunta {preguntaIndex + 1}:
+        <div key={preguntaIndex} className="card mb-3">
+          <div className="card-body">
+            <label className="form-label">
+              Pregunta {preguntaIndex + 1}:
+            </label>
             <input
               type="text"
+              className="form-control"
               value={pregunta.pregunta}
               onChange={(e) => handlePreguntaChange(preguntaIndex, e)}
             />
-          </label>
-          <button onClick={() => agregarOpcion(preguntaIndex)}>
-            Agregar Opción
-          </button>
+            <button
+              className="btn btn-secondary mb-3"
+              onClick={() => agregarOpcion(preguntaIndex)}
+            >
+              Agregar Opción
+            </button>
 
-          <button onClick={() => eliminarPregunta(preguntaIndex)}>
-            Eliminar Pregunta
-          </button>
+            <button
+              className="btn btn-danger mb-3"
+              onClick={() => eliminarPregunta(preguntaIndex)}
+            >
+              Eliminar Pregunta
+            </button>
 
-          {pregunta.opciones.map((opcion, opcionIndex) => (
-            <div key={opcionIndex}>
-              <label>
-                Opción {opcionIndex + 1}:
+            {pregunta.opciones.map((opcion, opcionIndex) => (
+              <div key={opcionIndex} className="mb-3">
+                <label className="form-label">
+                  Opción {opcionIndex + 1}:
+                </label>
                 <input
                   type="text"
+                  className="form-control"
                   value={opcion}
                   onChange={(e) =>
                     handleOpcionChange(preguntaIndex, opcionIndex, e)
                   }
                 />
-              </label>
-              <button
-                onClick={() => eliminarOpcion(preguntaIndex, opcionIndex)}
-              >
-                Eliminar Opción
-              </button>
-            </div>
-          ))}
+                <button
+                  className="btn btn-danger"
+                  onClick={() => eliminarOpcion(preguntaIndex, opcionIndex)}
+                >
+                  Eliminar Opción
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       ))}
-      <button onClick={() => agregarEvaluacion(evaluacion)}>
+      <button
+        className="btn btn-primary mb-3"
+        onClick={() => agregarEvaluacion(evaluacion)}
+      >
         Guardar Evaluación
       </button>
     </div>

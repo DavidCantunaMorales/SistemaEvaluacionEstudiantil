@@ -1,5 +1,49 @@
 [
   {
+    "id": 2,
+    "titulo": "Ciencias",
+    "preguntas": [
+      {
+        "pregunta": "¿Cuál es el símbolo químico del oro?",
+        "opciones": [
+          "Au",
+          "Ag",
+          "Fe"
+        ]
+      },
+      {
+        "pregunta": "¿Qué planeta es conocido como el planeta rojo?",
+        "opciones": [
+          "Marte",
+          "Venus",
+          "Júpiter"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "titulo": "Matemáticas",
+    "preguntas": [
+      {
+        "pregunta": "¿Cuál es el resultado de 2 + 2?",
+        "opciones": [
+          "4",
+          "5",
+          "6"
+        ]
+      },
+      {
+        "pregunta": "¿Cuántos lados tiene un triángulo?",
+        "opciones": [
+          "3",
+          "4",
+          "5"
+        ]
+      }
+    ]
+  },
+  {
     "id": 4,
     "titulo": "Geografía",
     "preguntas": [
@@ -31,31 +75,33 @@
   },
   {
     "id": 5,
-    "titulo": "12312",
+    "titulo": "Fisica",
     "preguntas": [
       {
-        "pregunta": "123123",
+        "pregunta": "Pregunta 1",
         "opciones": [
-          "123123",
-          "123123",
-          "12321"
+          "1",
+          "2"
         ]
       },
       {
-        "pregunta": "123123123",
-        "opciones": []
+        "pregunta": "Pregunta 2",
+        "opciones": [
+          "3",
+          "4"
+        ]
       }
     ]
   },
   {
     "id": 6,
-    "titulo": "13123123",
+    "titulo": "Matematica",
     "preguntas": [
       {
-        "pregunta": "1231232",
+        "pregunta": "Cuanto equivale 180 grados en radianes",
         "opciones": [
-          "123123",
-          "112312312"
+          "pi radianes",
+          "2 pi radianes"
         ]
       }
     ]

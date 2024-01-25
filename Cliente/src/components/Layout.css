@@ -1,0 +1,24 @@
+
+.container-fluid {
+  background-color: #f8f9fa; /* Fondo general del contenedor fluido */
+}
+
+.navbar {
+  background-color: #ffffff; /* Color de fondo de la barra de navegación */
+  border-bottom: 1px solid #e9ecef; /* Borde inferior de la barra de navegación */
+}
+
+.item {
+  margin-right: 60em; /* Margen derecho de los elementos de la barra de navegación */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
+.item:hover {
+  color: #1ee63f; /* Color del texto de los elementos de la barra de navegación al pasar el ratón por encima */
+  font-size: 22px;
+}
+
+.nav-link {
+  color: #5581ad; /* Color del texto en los enlaces de la barra de navegación */
+}

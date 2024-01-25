@@ -1,0 +1,53 @@
+/* Inicio.css */
+
+.evaluaciones-container {
+  background-color: #ad9650;
+  padding: 20px;
+}
+
+.evaluacion-item {
+  background-color: #c3c94c;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.evaluacion-item h1 {
+  margin-bottom: 15px;
+}
+
+.preguntas-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Hace que las preguntas se envuelvan en la siguiente fila si no hay suficiente espacio */
+}
+
+.pregunta-item {
+  width: calc(50% - 20px); /* Establece el ancho para dos preguntas por fila, considerando el margen de 20px */
+  margin-bottom: 15px;
+  box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto */
+}
+
+.opciones-list {
+  list-style: none;
+  padding: 0;
+}
+
+.opcion-item {
+  margin-bottom: 10px;
+}
+
+.btn-danger {
+  background-color: #FF4136;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #D32F2F;
+}
+
+.card-text {
+  color: black;
+  font-weight: 500;
+}	
