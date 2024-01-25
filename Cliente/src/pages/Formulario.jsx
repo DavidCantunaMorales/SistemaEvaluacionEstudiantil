@@ -1,17 +1,18 @@
 import { useState } from "react";
-import "./Formulario.css";
+import axios from "axios";
 
+const POST_API_URL = "http://localhost:3002/agregarEvaluacion";
 
 export const Formulario = () => {
   const [evaluacion, setEvaluacion] = useState({
-    nombre: "",
+    titulo: "",
     preguntas: [],
   });
 
   const handleNombreChange = (e) => {
     setEvaluacion({
       ...evaluacion,
-      nombre: e.target.value,
+      titulo: e.target.value,
     });
   };
 
@@ -49,119 +50,68 @@ export const Formulario = () => {
     });
   };
 
-  const guardarEvaluacionEnBackend = async () => {
+  const agregarEvaluacion = async () => {
     try {
-      const response = await fetch("http://localhost:3001/guardar-evaluacion", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(evaluacion),
-      });
+      const response = await axios.post(POST_API_URL, evaluacion);
+      // Hacer algo con la respuesta, por ejemplo, actualizar el estado o redirigir
+      console.log("Evaluación agregada exitosamente:", response.data);
 
-      if (response.ok) {
-        console.log("Evaluación guardada con éxito en el servidor.");
-      } else {
-        console.error("Error al guardar la evaluación en el servidor.");
-      }
+      // Puedes actualizar el estado aquí si es necesario
+      setEvaluacion({
+        titulo: "",
+        preguntas: [],
+      });
     } catch (error) {
-      console.error("Error de red:", error);
+      console.error("Error al agregar una nueva evaluación:", error);
     }
   };
 
   return (
-    <div className="container mt-4">
+    <div>
       <h1>Formulario de Evaluación</h1>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="nombreEvaluacion" className="form-label">
-            Nombre de la Evaluación:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="nombreEvaluacion"
-            value={evaluacion.nombre}
-            onChange={handleNombreChange}
-          />
-        </div>
-        <button
-          type="button"
-          className="btn btn-primary mb-3"
-          onClick={agregarPregunta}
-        >
-          Agregar Pregunta
-        </button>
+      <label>
+        Nombre de la Evaluación:
+        <input
+          type="text"
+          value={evaluacion.titulo}
+          onChange={handleNombreChange}
+        />
+      </label>
+      <button onClick={agregarPregunta}>Agregar Pregunta</button>
 
-        {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-          <div key={preguntaIndex} className="mb-3">
-            <label htmlFor={`pregunta${preguntaIndex}`} className="form-label">
-              Pregunta {preguntaIndex + 1}:
-            </label>
+      {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
+        <div key={preguntaIndex}>
+          <label>
+            Pregunta {preguntaIndex + 1}:
             <input
               type="text"
-              className="form-control"
-              id={`pregunta${preguntaIndex}`}
               value={pregunta.pregunta}
               onChange={(e) => handlePreguntaChange(preguntaIndex, e)}
             />
-            <button
-              type="button"
-              className="btn btn-secondary mb-3"
-              onClick={() => agregarOpcion(preguntaIndex)}
-            >
-              Agregar Opción
-            </button>
+          </label>
+          <button onClick={() => agregarOpcion(preguntaIndex)}>
+            Agregar Opción
+          </button>
 
-            {pregunta.opciones.map((opcion, opcionIndex) => (
-              <div key={opcionIndex} className="mb-3">
-                <label
-                  htmlFor={`opcion${preguntaIndex}-${opcionIndex}`}
-                  className="form-label"
-                >
-                  Opción {opcionIndex + 1}:
-                </label>
+          {pregunta.opciones.map((opcion, opcionIndex) => (
+            <div key={opcionIndex}>
+              <label>
+                Opción {opcionIndex + 1}:
                 <input
                   type="text"
-                  className="form-control"
-                  id={`opcion${preguntaIndex}-${opcionIndex}`}
                   value={opcion}
                   onChange={(e) =>
                     handleOpcionChange(preguntaIndex, opcionIndex, e)
                   }
                 />
-              </div>
-            ))}
-          </div>
-        ))}
-
-        <div className="mb-3">
-          <h2>Resumen:</h2>
-          <p>Nombre de la Evaluación: {evaluacion.nombre}</p>
-          <p>Preguntas:</p>
-          <ul>
-            {evaluacion.preguntas.map((pregunta, preguntaIndex) => (
-              <li key={preguntaIndex}>
-                Pregunta {preguntaIndex + 1}: {pregunta.pregunta}
-                <ul>
-                  {pregunta.opciones.map((opcion, opcionIndex) => (
-                    <li key={opcionIndex}>
-                      Opción {opcionIndex + 1}: {opcion}
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+              </label>
+            </div>
+          ))}
         </div>
-        <button
-          type="button"
-          className="btn btn-primary mb-2"
-          onClick={() => guardarEvaluacionEnBackend(evaluacion)}
-        >
-          Guardar Evaluación
-        </button>
-      </form>
+      ))}
+      <button onClick={() => agregarEvaluacion(evaluacion)}>
+        Guardar Evaluación
+      </button>
     </div>
   );
 };
