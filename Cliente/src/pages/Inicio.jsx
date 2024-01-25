@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const GET_API_URL = "http://localhost:3001/obtenerEvaluaciones";
+const DELETE_API_URL = "http://localhost:3003/eliminarEvaluacion";
 
 export const Inicio = () => {
   const [evaluaciones, setEvaluaciones] = useState([]);
@@ -14,6 +15,19 @@ export const Inicio = () => {
         console.log("Error al obtener las evaluaciones:", error)
       );
   }, []);
+
+  const eliminarProducto = (id) => {
+    axios
+      .delete(`${DELETE_API_URL}/${id}`)
+      .then(() => {
+        // Filtrar los productos para excluir el producto eliminado
+        const nuevaEvaluacion = evaluaciones.filter(
+          (evaluacion) => evaluacion.id !== id
+        );
+        setEvaluaciones(nuevaEvaluacion); // Seteamos los nuevos productos
+      })
+      .catch((error) => console.error("Error al eliminar el producto:", error));
+  };
 
   return (
     <div>
@@ -37,6 +51,9 @@ export const Inicio = () => {
                 </li>
               ))}
             </ul>
+            <button onClick={() => eliminarProducto(evaluacion.id)}>
+              Eliminar
+            </button>
           </li>
         ))}
       </ul>
