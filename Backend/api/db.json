@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "titulo": "Matematicas",
+    "preguntas": [
+      {
+        "pregunta": "Que es constante",
+        "opciones": [
+          "numeor",
+          "constante"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "titulo": "Historia",
+    "preguntas": [
+      {
+        "pregunta": "Que es constante",
+        "opciones": [
+          "numeor",
+          "constante"
+        ]
+      },
+      {
+        "pregunta": "Que es constante",
+        "opciones": [
+          "numeor",
+          "constante"
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Lenguaje",
+    "preguntas": [
+      {
+        "pregunta": "Que es el lenguaje",
+        "opciones": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "123123123123",
+    "preguntas": []
+  },
+  {
+    "id": 5,
+    "titulo": "123123123",
+    "preguntas": []
+  },
+  {
+    "id": 6,
+    "titulo": "Como funciona el lenguaje",
+    "preguntas": [
+      {
+        "pregunta": "Que es",
+        "opciones": [
+          ""
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "titulo": "qweqweqwew",
+    "preguntas": [
+      {
+        "pregunta": "qeqweqw",
+        "opciones": [
+          "qweqwe",
+          "qweqwe",
+          "qweqwe"
+        ]
+      },
+      {
+        "pregunta": "qweqweqweqwe",
+        "opciones": [
+          "qweqwe",
+          "qweqw"
+        ]
+      },
+      {
+        "pregunta": "qweqwe",
+        "opciones": [
+          "qeqwe",
+          "qweq"
+        ]
+      }
+    ]
+  }
+]
