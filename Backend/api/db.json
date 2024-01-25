@@ -1,32 +1,32 @@
 [
   {
-    "id": 2,
-    "titulo": "Historia",
+    "id": 4,
+    "titulo": "Geografía",
     "preguntas": [
       {
-        "pregunta": "Que es constante",
+        "pregunta": "¿Cuál es la capital de Francia",
         "opciones": [
-          "numeor",
-          "constante"
+          "París",
+          "Berlín",
+          "Londres"
         ]
       },
       {
-        "pregunta": "Que es constante",
+        "pregunta": "¿En qué continente se encuentra Australia?",
         "opciones": [
-          "numeor",
-          "constante"
+          "Oceanía",
+          "Asia",
+          "Europa"
+        ]
+      },
+      {
+        "pregunta": "¿Quién escribió 'Cien años de soledad'?",
+        "opciones": [
+          "Gabriel García Márquez",
+          "Pablo Neruda",
+          "Jorge Luis Borges"
         ]
       }
     ]
-  },
-  {
-    "id": 5,
-    "titulo": "123123123",
-    "preguntas": []
-  },
-  {
-    "id": 8,
-    "titulo": "12312312",
-    "preguntas": []
   }
 ]
