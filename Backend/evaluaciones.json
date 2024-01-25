@@ -1,72 +1,88 @@
 [
-    {
-        "nombre": "123",
-        "preguntas": [
-            {
-                "pregunta": "123",
-                "opciones": [
-                    "123"
-                ]
-            }
+  {
+    "nombre": "123",
+    "preguntas": [
+      {
+        "pregunta": "123",
+        "opciones": [
+          "123"
         ]
-    },
-    {
-        "nombre": "1231",
-        "preguntas": [
-            {
-                "pregunta": "1231",
-                "opciones": [
-                    "12312",
-                    "123",
-                    "123",
-                    "123"
-                ]
-            },
-            {
-                "pregunta": "12312",
-                "opciones": [
-                    "123"
-                ]
-            }
+      }
+    ]
+  },
+  {
+    "nombre": "1231",
+    "preguntas": [
+      {
+        "pregunta": "1231",
+        "opciones": [
+          "12312",
+          "123",
+          "123",
+          "123"
         ]
-    },
-    {
-        "nombre": "Matemica",
-        "preguntas": [
-            {
-                "pregunta": "Que es pito",
-                "opciones": [
-                    "si",
-                    "no"
-                ]
-            },
-            {
-                "pregunta": "Que es constante",
-                "opciones": [
-                    "123",
-                    "123",
-                    "123"
-                ]
-            }
+      },
+      {
+        "pregunta": "12312",
+        "opciones": [
+          "123"
         ]
-    },
-    {
-        "nombre": "asdasdasdasdasd",
-        "preguntas": [
-            {
-                "pregunta": "asdasdasdasdasda",
-                "opciones": [
-                    "asdasdasds",
-                    "asdasdasd"
-                ]
-            },
-            {
-                "pregunta": "fgjhfjhgjghjghjghj",
-                "opciones": [
-                    "23123",
-                    "123"
-                ]
-            }
+      }
+    ]
+  },
+  {
+    "nombre": "Matemica",
+    "preguntas": [
+      {
+        "pregunta": "Que es pito",
+        "opciones": [
+          "si",
+          "no"
         ]
-    }
+      },
+      {
+        "pregunta": "Que es constante",
+        "opciones": [
+          "123",
+          "123",
+          "123"
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "asdasdasdasdasd",
+    "preguntas": [
+      {
+        "pregunta": "asdasdasdasdasda",
+        "opciones": [
+          "asdasdasds",
+          "asdasdasd"
+        ]
+      },
+      {
+        "pregunta": "fgjhfjhgjghjghjghj",
+        "opciones": [
+          "23123",
+          "123"
+        ]
+      }
+    ]
+  },
+  {
+    "nombre": "hola",
+    "preguntas": [
+      {
+        "pregunta": "12312",
+        "opciones": [
+          "12312",
+          "12312"
+        ]
+      },
+      {
+        "pregunta": "12312",
+        "opciones": []
+      }
+    ]
+  }
 ]
