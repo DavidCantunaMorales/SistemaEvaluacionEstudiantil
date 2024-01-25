@@ -50,6 +50,24 @@ export const Formulario = () => {
     });
   };
 
+  const eliminarPregunta = (index) => {
+    const nuevasPreguntas = [...evaluacion.preguntas];
+    nuevasPreguntas.splice(index, 1);
+    setEvaluacion({
+      ...evaluacion,
+      preguntas: nuevasPreguntas,
+    });
+  };
+
+  const eliminarOpcion = (preguntaIndex, opcionIndex) => {
+    const nuevasPreguntas = [...evaluacion.preguntas];
+    nuevasPreguntas[preguntaIndex].opciones.splice(opcionIndex, 1);
+    setEvaluacion({
+      ...evaluacion,
+      preguntas: nuevasPreguntas,
+    });
+  };
+
   const agregarEvaluacion = async () => {
     try {
       const response = await axios.post(POST_API_URL, evaluacion);
@@ -93,6 +111,10 @@ export const Formulario = () => {
             Agregar Opción
           </button>
 
+          <button onClick={() => eliminarPregunta(preguntaIndex)}>
+            Eliminar Pregunta
+          </button>
+
           {pregunta.opciones.map((opcion, opcionIndex) => (
             <div key={opcionIndex}>
               <label>
@@ -105,6 +127,11 @@ export const Formulario = () => {
                   }
                 />
               </label>
+              <button
+                onClick={() => eliminarOpcion(preguntaIndex, opcionIndex)}
+              >
+                Eliminar Opción
+              </button>
             </div>
           ))}
         </div>
